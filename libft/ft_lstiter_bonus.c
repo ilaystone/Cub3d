@@ -1,21 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   ft_lstiter_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikhadem <ikhadem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/15 04:07:59 by ikhadem           #+#    #+#             */
-/*   Updated: 2019/12/15 21:56:24 by ikhadem          ###   ########.fr       */
+/*   Created: 2019/10/19 14:06:00 by ikhadem           #+#    #+#             */
+/*   Updated: 2019/10/23 06:56:19 by ikhadem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "libft.h"
 
-void	canvas_init(t_canvas *win, int w, int h, char *title)
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	win->ptr = mlx_init();
-	win->win = mlx_new_window(win->ptr, w, h, title);
-	win->img_ptr = mlx_new_image(win->ptr, w, h);
-	win->img_data = mlx_get_data_addr(win->img_ptr, &win->bpp, &win->size_line, &win->endian);
+	if (lst == NULL || f == NULL)
+		return ;
+	while (lst)
+	{
+		f(lst->content);
+		lst = lst->next;
+	}
 }

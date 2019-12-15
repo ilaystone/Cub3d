@@ -1,21 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   ft_lowerstr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikhadem <ikhadem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/15 04:07:59 by ikhadem           #+#    #+#             */
-/*   Updated: 2019/12/15 21:56:24 by ikhadem          ###   ########.fr       */
+/*   Created: 2019/11/06 16:56:13 by ikhadem           #+#    #+#             */
+/*   Updated: 2019/11/06 16:57:49 by ikhadem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "libft.h"
 
-void	canvas_init(t_canvas *win, int w, int h, char *title)
+char	*ft_lowerstr(char *str)
 {
-	win->ptr = mlx_init();
-	win->win = mlx_new_window(win->ptr, w, h, title);
-	win->img_ptr = mlx_new_image(win->ptr, w, h);
-	win->img_data = mlx_get_data_addr(win->img_ptr, &win->bpp, &win->size_line, &win->endian);
+	char	*res;
+	int		i;
+
+	i = 0;
+	res = (char *)malloc(ft_strlen(str));
+	while (str[i])
+	{
+		res[i] = ft_tolower(str[i]);
+		i++;
+	}
+	res[i] = '\0';
+	return (res);
 }

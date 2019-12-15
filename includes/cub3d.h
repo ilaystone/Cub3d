@@ -6,7 +6,7 @@
 /*   By: ikhadem <ikhadem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/13 21:48:39 by ikhadem           #+#    #+#             */
-/*   Updated: 2019/12/15 05:41:01 by ikhadem          ###   ########.fr       */
+/*   Updated: 2019/12/15 21:56:03 by ikhadem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,10 @@
 # include <math.h>
 # include "../minilibx/mlx.h"
 # include "point.h"
+# include "line.h"
+# include "rect.h"
 
-typedef struct	s_display
+typedef struct	s_canvas
 {
 	void	*ptr;
 	void	*win;
@@ -27,10 +29,10 @@ typedef struct	s_display
 	int		size_line;
 	int		endian;
 	char	*img_data;
-}				t_display;
+}				t_canvas;
 
-t_display		g_win;
+t_canvas		g_win;
 
-void			display_init(t_display *win, int w, int h, char *title);
+void			canvas_init(t_canvas *win, int w, int h, char *title);
 
 #endif

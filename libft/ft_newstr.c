@@ -1,21 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   ft_newstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikhadem <ikhadem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/15 04:07:59 by ikhadem           #+#    #+#             */
-/*   Updated: 2019/12/15 21:56:24 by ikhadem          ###   ########.fr       */
+/*   Created: 2019/11/08 15:50:00 by ikhadem           #+#    #+#             */
+/*   Updated: 2019/11/08 15:52:11 by ikhadem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "libft.h"
 
-void	canvas_init(t_canvas *win, int w, int h, char *title)
+char	*ft_newstr(size_t n)
 {
-	win->ptr = mlx_init();
-	win->win = mlx_new_window(win->ptr, w, h, title);
-	win->img_ptr = mlx_new_image(win->ptr, w, h);
-	win->img_data = mlx_get_data_addr(win->img_ptr, &win->bpp, &win->size_line, &win->endian);
+	char	*str;
+
+	if (!(str = (char *)malloc(n)))
+		return (NULL);
+	return (str);
 }

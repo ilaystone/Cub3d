@@ -1,21 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   ft_lstadd_back_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikhadem <ikhadem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/15 04:07:59 by ikhadem           #+#    #+#             */
-/*   Updated: 2019/12/15 21:56:24 by ikhadem          ###   ########.fr       */
+/*   Created: 2019/10/19 13:37:55 by ikhadem           #+#    #+#             */
+/*   Updated: 2019/10/23 06:55:09 by ikhadem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "libft.h"
 
-void	canvas_init(t_canvas *win, int w, int h, char *title)
+void	ft_lstadd_back(t_list **alst, t_list *new)
 {
-	win->ptr = mlx_init();
-	win->win = mlx_new_window(win->ptr, w, h, title);
-	win->img_ptr = mlx_new_image(win->ptr, w, h);
-	win->img_data = mlx_get_data_addr(win->img_ptr, &win->bpp, &win->size_line, &win->endian);
+	t_list	*last;
+
+	last = *alst;
+	if (*alst == NULL)
+		*alst = new;
+	else
+	{
+		while (last->next)
+			last = last->next;
+		last->next = new;
+	}
 }

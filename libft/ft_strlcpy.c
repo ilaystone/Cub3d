@@ -1,21 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikhadem <ikhadem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/15 04:07:59 by ikhadem           #+#    #+#             */
-/*   Updated: 2019/12/15 21:56:24 by ikhadem          ###   ########.fr       */
+/*   Created: 2019/10/16 14:28:48 by ikhadem           #+#    #+#             */
+/*   Updated: 2019/10/28 18:27:31 by ikhadem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "libft.h"
 
-void	canvas_init(t_canvas *win, int w, int h, char *title)
+size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 {
-	win->ptr = mlx_init();
-	win->win = mlx_new_window(win->ptr, w, h, title);
-	win->img_ptr = mlx_new_image(win->ptr, w, h);
-	win->img_data = mlx_get_data_addr(win->img_ptr, &win->bpp, &win->size_line, &win->endian);
+	size_t slen;
+
+	slen = ft_strlen(src);
+	if (slen + 1 < size)
+		ft_memcpy(dest, src, slen + 1);
+	else if (size != 0)
+	{
+		ft_memcpy(dest, src, size - 1);
+		dest[size - 1] = '\0';
+	}
+	return (slen);
 }

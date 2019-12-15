@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   point.h                                            :+:      :+:    :+:   */
+/*   ft_isspace.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikhadem <ikhadem@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ikhadem <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/15 05:38:19 by ikhadem           #+#    #+#             */
-/*   Updated: 2019/12/15 17:22:19 by ikhadem          ###   ########.fr       */
+/*   Created: 2019/10/18 08:02:06 by ikhadem           #+#    #+#             */
+/*   Updated: 2019/10/18 08:06:51 by ikhadem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef POINT_H
-# define POINT_H
+#include "libft.h"
 
-# include "cub3d.h"
-
-typedef struct	s_point
+int		ft_isspace(int c)
 {
-	int			x;
-	int			y;
-}				t_point;
+	unsigned char i;
 
-t_point			new_point(int x, int y);
-void			add_point(t_point p);
-void			draw_point(t_point p);
-
-#endif
+	i = (unsigned char)c;
+	if (i == ' ' || i == '\n' || i == '\t' ||
+			i == '\v' || i == '\r' || i == '\f')
+		return (1);
+	return (0);
+}

@@ -1,28 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   point.h                                            :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikhadem <ikhadem@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ikhadem <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/15 05:38:19 by ikhadem           #+#    #+#             */
-/*   Updated: 2019/12/15 17:22:19 by ikhadem          ###   ########.fr       */
+/*   Created: 2019/10/17 08:57:51 by ikhadem           #+#    #+#             */
+/*   Updated: 2019/10/17 09:02:32 by ikhadem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef POINT_H
-# define POINT_H
+#include "libft.h"
 
-# include "cub3d.h"
-
-typedef struct	s_point
+int		ft_isprint(int c)
 {
-	int			x;
-	int			y;
-}				t_point;
-
-t_point			new_point(int x, int y);
-void			add_point(t_point p);
-void			draw_point(t_point p);
-
-#endif
+	if (c >= 32 && c < 127)
+		return (1);
+	return (0);
+}

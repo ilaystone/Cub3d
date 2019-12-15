@@ -1,21 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   ft_puthex.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikhadem <ikhadem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/15 04:07:59 by ikhadem           #+#    #+#             */
-/*   Updated: 2019/12/15 21:56:24 by ikhadem          ###   ########.fr       */
+/*   Created: 2019/11/03 16:16:25 by ikhadem           #+#    #+#             */
+/*   Updated: 2019/11/04 13:24:07 by ikhadem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "libft.h"
 
-void	canvas_init(t_canvas *win, int w, int h, char *title)
+void	ft_puthex(long int n, int type)
 {
-	win->ptr = mlx_init();
-	win->win = mlx_new_window(win->ptr, w, h, title);
-	win->img_ptr = mlx_new_image(win->ptr, w, h);
-	win->img_data = mlx_get_data_addr(win->img_ptr, &win->bpp, &win->size_line, &win->endian);
+	unsigned long int	nbr;
+	int					sign;
+	char				c;
+
+	sign = n < 0 ? -1 : 1;
+	nbr = n * sign;
+	if (n < 0)
+		ft_putchar('-');
+	if (nbr >= 16)
+		ft_puthex(nbr / 16, type);
+	if (type == L_HEXA)
+		c = nbr % 16 >= 10 ? nbr % 16 + 87 : nbr % 16 + 48;
+	else
+		c = nbr % 16 >= 10 ? nbr % 16 + 55 : nbr % 16 + 48;
+	ft_putchar(c);
 }

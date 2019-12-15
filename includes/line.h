@@ -1,21 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   line.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikhadem <ikhadem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/15 04:07:59 by ikhadem           #+#    #+#             */
-/*   Updated: 2019/12/15 21:56:24 by ikhadem          ###   ########.fr       */
+/*   Created: 2019/12/15 14:53:48 by ikhadem           #+#    #+#             */
+/*   Updated: 2019/12/15 17:38:43 by ikhadem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#ifndef LINE_H
+# define LINE_H
 
-void	canvas_init(t_canvas *win, int w, int h, char *title)
+# include "cub3d.h"
+
+typedef struct	s_line
 {
-	win->ptr = mlx_init();
-	win->win = mlx_new_window(win->ptr, w, h, title);
-	win->img_ptr = mlx_new_image(win->ptr, w, h);
-	win->img_data = mlx_get_data_addr(win->img_ptr, &win->bpp, &win->size_line, &win->endian);
-}
+	t_point		p1;
+	t_point		p2;
+}				t_line;
+
+t_line			new_line(t_point p1, t_point p2);
+void			add_line(t_line l, t_point d, t_point s);
+void			draw_line(t_line l);
+
+#endif

@@ -1,28 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   point.h                                            :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikhadem <ikhadem@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ikhadem <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/15 05:38:19 by ikhadem           #+#    #+#             */
-/*   Updated: 2019/12/15 17:22:19 by ikhadem          ###   ########.fr       */
+/*   Created: 2019/10/16 18:24:46 by ikhadem           #+#    #+#             */
+/*   Updated: 2019/10/16 18:43:48 by ikhadem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef POINT_H
-# define POINT_H
+#include "libft.h"
 
-# include "cub3d.h"
-
-typedef struct	s_point
+char	*ft_strchr(const char *str, int c)
 {
-	int			x;
-	int			y;
-}				t_point;
-
-t_point			new_point(int x, int y);
-void			add_point(t_point p);
-void			draw_point(t_point p);
-
-#endif
+	if (c == '\0')
+		return ((char *)(str + ft_strlen(str)));
+	return ((char *)ft_memchr(str, c, ft_strlen(str)));
+}

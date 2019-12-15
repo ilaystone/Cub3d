@@ -1,22 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikhadem <ikhadem@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ikhadem <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/13 20:02:50 by ikhadem           #+#    #+#             */
-/*   Updated: 2019/12/15 22:05:50 by ikhadem          ###   ########.fr       */
+/*   Created: 2019/10/16 18:53:36 by ikhadem           #+#    #+#             */
+/*   Updated: 2019/10/16 18:54:30 by ikhadem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/cub3d.h"
+#include "libft.h"
 
-int		main(void)
+char	*ft_strrchr(const char *str, int c)
 {
-	canvas_init(&g_win, 500, 500, "cub3d");
-	//draw_rect(new_rect(200, 200, new_point(100, 100)));
-	draw_line(new_line(new_point(0, 0), new_point(100, 150)));
-	mlx_loop(g_win.ptr);
-	return (0);
+	size_t slen;
+
+	slen = ft_strlen(str);
+	if ((char)c == '\0')
+		return ((char *)(str + slen));
+	while (slen--)
+		if (str[slen] == (char)c)
+			return ((char *)(str + slen));
+	return (NULL);
 }

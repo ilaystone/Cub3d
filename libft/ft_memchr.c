@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   point.h                                            :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikhadem <ikhadem@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ikhadem <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/15 05:38:19 by ikhadem           #+#    #+#             */
-/*   Updated: 2019/12/15 17:22:19 by ikhadem          ###   ########.fr       */
+/*   Created: 2019/10/16 14:04:25 by ikhadem           #+#    #+#             */
+/*   Updated: 2019/10/16 14:04:27 by ikhadem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef POINT_H
-# define POINT_H
+#include "libft.h"
 
-# include "cub3d.h"
-
-typedef struct	s_point
+void	*ft_memchr(const void *src, int c, size_t len)
 {
-	int			x;
-	int			y;
-}				t_point;
+	unsigned char *s;
 
-t_point			new_point(int x, int y);
-void			add_point(t_point p);
-void			draw_point(t_point p);
-
-#endif
+	s = (unsigned char *)src;
+	while (len--)
+	{
+		if (*s++ == (unsigned char)c)
+			return (--s);
+	}
+	return (NULL);
+}

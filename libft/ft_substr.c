@@ -1,21 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikhadem <ikhadem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/15 04:07:59 by ikhadem           #+#    #+#             */
-/*   Updated: 2019/12/15 21:56:24 by ikhadem          ###   ########.fr       */
+/*   Created: 2019/10/17 10:14:21 by ikhadem           #+#    #+#             */
+/*   Updated: 2019/10/28 18:20:42 by ikhadem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "libft.h"
 
-void	canvas_init(t_canvas *win, int w, int h, char *title)
+char	*ft_substr(const char *str, unsigned int start, size_t len)
 {
-	win->ptr = mlx_init();
-	win->win = mlx_new_window(win->ptr, w, h, title);
-	win->img_ptr = mlx_new_image(win->ptr, w, h);
-	win->img_data = mlx_get_data_addr(win->img_ptr, &win->bpp, &win->size_line, &win->endian);
+	char			*res;
+	unsigned int	i;
+
+	if (!str)
+		return (NULL);
+	if (!(res = (char *)malloc(sizeof(*str) * (len + 1))))
+		return (NULL);
+	i = 0;
+	if (!(start > ft_strlen(str)))
+	{
+		while (i < len && str[i + start] != '\0')
+		{
+			res[i] = str[i + start];
+			i++;
+		}
+	}
+	res[i] = '\0';
+	return (res);
 }

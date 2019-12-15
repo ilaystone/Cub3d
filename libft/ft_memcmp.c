@@ -1,22 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikhadem <ikhadem@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ikhadem <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/13 20:02:50 by ikhadem           #+#    #+#             */
-/*   Updated: 2019/12/15 22:05:50 by ikhadem          ###   ########.fr       */
+/*   Created: 2019/10/16 14:15:44 by ikhadem           #+#    #+#             */
+/*   Updated: 2019/10/16 14:15:46 by ikhadem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/cub3d.h"
+#include "libft.h"
 
-int		main(void)
+int		ft_memcmp(const void *s1, const void *s2, size_t len)
 {
-	canvas_init(&g_win, 500, 500, "cub3d");
-	//draw_rect(new_rect(200, 200, new_point(100, 100)));
-	draw_line(new_line(new_point(0, 0), new_point(100, 150)));
-	mlx_loop(g_win.ptr);
+	unsigned char *t1;
+	unsigned char *t2;
+
+	t1 = (unsigned char *)s1;
+	t2 = (unsigned char *)s2;
+	while (len--)
+	{
+		if (*t1 != *t2)
+			return ((int)(*t1 - *t2));
+		t1++;
+		t2++;
+	}
 	return (0);
 }

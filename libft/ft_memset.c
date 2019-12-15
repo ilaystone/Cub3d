@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   point.h                                            :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikhadem <ikhadem@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ikhadem <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/15 05:38:19 by ikhadem           #+#    #+#             */
-/*   Updated: 2019/12/15 17:22:19 by ikhadem          ###   ########.fr       */
+/*   Created: 2019/10/16 11:05:23 by ikhadem           #+#    #+#             */
+/*   Updated: 2019/10/16 11:33:09 by ikhadem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef POINT_H
-# define POINT_H
+#include "libft.h"
 
-# include "cub3d.h"
-
-typedef struct	s_point
+void	*ft_memset(void *dest, int c, size_t len)
 {
-	int			x;
-	int			y;
-}				t_point;
+	unsigned char	*d;
 
-t_point			new_point(int x, int y);
-void			add_point(t_point p);
-void			draw_point(t_point p);
-
-#endif
+	d = (unsigned char *)dest;
+	while (len--)
+		*d++ = c;
+	return (dest);
+}
