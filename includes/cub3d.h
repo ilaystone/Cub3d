@@ -6,7 +6,7 @@
 /*   By: ikhadem <ikhadem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/13 21:48:39 by ikhadem           #+#    #+#             */
-/*   Updated: 2019/12/15 21:56:03 by ikhadem          ###   ########.fr       */
+/*   Updated: 2019/12/16 04:34:22 by ikhadem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,13 @@
 # include <stdlib.h>
 # include <math.h>
 # include "../minilibx/mlx.h"
+# include "../libft/libft.h"
+# include "map.h"
+# include "color.h"
 # include "point.h"
 # include "line.h"
 # include "rect.h"
+# include "player.h"
 
 typedef struct	s_canvas
 {
@@ -33,6 +37,6 @@ typedef struct	s_canvas
 
 t_canvas		g_win;
 
-void			canvas_init(t_canvas *win, int w, int h, char *title);
+void			canvas_init(int w, int h, char *title);
 
 #endif

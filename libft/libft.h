@@ -6,22 +6,28 @@
 /*   By: ikhadem <ikhadem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 09:01:36 by ikhadem           #+#    #+#             */
-/*   Updated: 2019/11/13 10:00:47 by ikhadem          ###   ########.fr       */
+/*   Updated: 2019/12/15 22:33:33 by ikhadem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 32
+# endif
+
 # include <string.h>
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
+# include <libc.h>
 
 # define SL_SIZE(A, B) (A < B ? A : B)
 # define ABS(A) (A < 0 ? -A : A)
 # define U_HEXA 0
 # define L_HEXA 1
+# define MAX_FD 10240
 
 typedef struct		s_list
 {
@@ -84,6 +90,8 @@ int					ft_pow(int b, int p);
 size_t				ft_wcharlen(unsigned c);
 size_t				ft_wstrlen(char *str);
 void				ft_swap(char *a, char *b);
+int					set_line(char **reads, char **line, int fd);
+int					get_next_line(int fd, char **line);
 
 /*
 **		BONUS

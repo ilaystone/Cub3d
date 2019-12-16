@@ -6,7 +6,7 @@
 #    By: ikhadem <ikhadem@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/13 19:57:44 by ikhadem           #+#    #+#              #
-#    Updated: 2019/12/15 17:52:34 by ikhadem          ###   ########.fr        #
+#    Updated: 2019/12/16 04:32:44 by ikhadem          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,8 +20,12 @@ SRC :=	main.c \
 		sources/cub3d.c \
 		sources/point.c \
 		sources/line.c \
-		sources/rect.c
+		sources/rect.c \
+		sources/color.c \
+		sources/player.c
 
 all:
-	make -C minilibx/
-	$(CC) $(CFLAGS) $(SRC) minilibx/libmlx.a -framework OpenGl -framework AppKit
+	@make -C minilibx/
+	@make -C libft/
+	@$(CC) $(CFLAGS) $(SRC) libft/libft.a minilibx/libmlx.a -framework OpenGl -framework AppKit
+	@echo "Done"

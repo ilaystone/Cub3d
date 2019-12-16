@@ -6,18 +6,19 @@
 /*   By: ikhadem <ikhadem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/15 14:53:23 by ikhadem           #+#    #+#             */
-/*   Updated: 2019/12/15 17:52:04 by ikhadem          ###   ########.fr       */
+/*   Updated: 2019/12/16 03:17:14 by ikhadem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-t_line		new_line(t_point p1, t_point p2)
+t_line		new_line(t_point p1, t_point p2, t_color c)
 {
 	t_line	l;
 
 	l.p1 = p1;
 	l.p2 = p2;
+	l.c = c;
 	return (l);
 }
 
@@ -33,7 +34,7 @@ void		add_line(t_line l, t_point d, t_point s)
 	err = d.x + d.y;
 	while (1)
 	{
-		add_point(l.p1);
+		add_point(l.p1, l.c);
 		if (l.p1.x == l.p2.x && l.p1.y == l.p2.y)
 			break ;
 		e = 2 * err;

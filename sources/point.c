@@ -6,7 +6,7 @@
 /*   By: ikhadem <ikhadem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/15 05:38:30 by ikhadem           #+#    #+#             */
-/*   Updated: 2019/12/15 17:22:15 by ikhadem          ###   ########.fr       */
+/*   Updated: 2019/12/16 04:45:37 by ikhadem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,18 @@ t_point			new_point(int x, int y)
 	return (p);
 }
 
-void			add_point(t_point p)
+void			add_point(t_point p, t_color c)
 {
 	int pos;
 
-	pos = p.x * 4 + p.y * 4 * 500;
-	g_win.img_data[pos] = (char)255;
-	g_win.img_data[pos + 1] = (char)255;
-	g_win.img_data[pos + 2] = (char)255;
+	pos = p.x * 4 + p.y * 4 * 29 * 32;
+	g_win.img_data[pos] = (char)c.b;
+	g_win.img_data[pos + 1] = (char)c.g;
+	g_win.img_data[pos + 2] = (char)c.r;
 }
 
 void			draw_point(t_point p)
 {
-	add_point(p);
+	add_point(p, new_color(255, 255, 255));
 	mlx_put_image_to_window(g_win.ptr, g_win.win, g_win.img_ptr, 0, 0);
 }
