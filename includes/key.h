@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_upperstr.c                                      :+:      :+:    :+:   */
+/*   key.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ikhadem <ikhadem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/06 16:53:40 by ikhadem           #+#    #+#             */
-/*   Updated: 2019/11/06 16:56:00 by ikhadem          ###   ########.fr       */
+/*   Created: 2019/12/16 14:49:18 by ikhadem           #+#    #+#             */
+/*   Updated: 2019/12/16 18:05:15 by ikhadem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef KEY_H
+# define KEY_H
 
-char	*ft_upperstr(char *str)
-{
-	char	*res;
-	int		i;
+# define K_ESC 53
+# define K_NUM_MULT 67
+# define K_NUM_DIV 75
+# define K_NUM_PLUS 69
+# define K_NUM_MINUS 78
+# define K_NUM_ENTER 76
+# define K_NUM_0 82
+# define K_UP 126
+# define K_DOWN 125
+# define K_LEFT 123
+# define K_RIGHT 124
+# define K_DIGIT_1 18
+# define K_L 37
 
-	i = 0;
-	res = (char *)malloc(ft_strlen(str));
-	while (str[i])
-	{
-		res[i] = ft_toupper(str[i]);
-		i++;
-	}
-	res[i] = '\0';
-	return (res);
-}
+#endif
