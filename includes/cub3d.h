@@ -6,7 +6,7 @@
 /*   By: ikhadem <ikhadem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/13 21:48:39 by ikhadem           #+#    #+#             */
-/*   Updated: 2019/12/16 17:52:43 by ikhadem          ###   ########.fr       */
+/*   Updated: 2019/12/17 17:02:45 by ikhadem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@
 # include <stdlib.h>
 # include <math.h>
 # include <mlx.h>
-# include "../libft/libft.h"
-# include "key.h"
-# include "map.h"
 # include "color.h"
 # include "point.h"
+# include "player.h"
+# include "key.h"
+# include "map.h"
 # include "line.h"
 # include "rect.h"
-# include "player.h"
+
 
 typedef struct	s_canvas
 {

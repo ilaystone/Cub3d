@@ -6,12 +6,11 @@
 /*   By: ikhadem <ikhadem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/15 04:07:59 by ikhadem           #+#    #+#             */
-/*   Updated: 2019/12/16 18:06:03 by ikhadem          ###   ########.fr       */
+/*   Updated: 2019/12/17 17:58:21 by ikhadem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
-#include <mlx.h>
 
 void	canvas_init(int w, int h, char *title)
 {

@@ -6,7 +6,7 @@
 /*   By: ikhadem <ikhadem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 04:15:33 by ikhadem           #+#    #+#             */
-/*   Updated: 2019/12/16 04:41:08 by ikhadem          ###   ########.fr       */
+/*   Updated: 2019/12/17 21:39:37 by ikhadem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ typedef struct	s_player
 {
 	t_point		pos;
 	float		radius;
-	int			turn_direction;
-	int			walk_direction;
+	float		turn_direction;
+	float		walk_direction;
 	float		rotation_angle;
 	float		move_speed;
 	float		rotation_speed;

@@ -6,7 +6,7 @@
 /*   By: ikhadem <ikhadem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 14:49:18 by ikhadem           #+#    #+#             */
-/*   Updated: 2019/12/16 18:05:15 by ikhadem          ###   ########.fr       */
+/*   Updated: 2019/12/16 21:25:50 by ikhadem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,6 @@
 # define K_RIGHT 124
 # define K_DIGIT_1 18
 # define K_L 37
+# define K_SP 49
 
 #endif

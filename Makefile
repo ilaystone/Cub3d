@@ -6,7 +6,7 @@
 #    By: ikhadem <ikhadem@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/13 19:57:44 by ikhadem           #+#    #+#              #
-#    Updated: 2019/12/16 18:01:22 by ikhadem          ###   ########.fr        #
+#    Updated: 2019/12/16 18:15:21 by ikhadem          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,5 @@ SRC :=	main.c \
 		sources/player.c
 
 all:
-	@make -C libft/
-	@$(CC) $(CFLAGS) $(SRC) libft/libft.a -lmlx -framework OpenGl -framework AppKit
+	@$(CC) $(CFLAGS) $(SRC) -lmlx -framework OpenGl -framework AppKit
 	@echo "Done"
