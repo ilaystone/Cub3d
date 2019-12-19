@@ -6,7 +6,7 @@
 /*   By: ikhadem <ikhadem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/15 05:38:19 by ikhadem           #+#    #+#             */
-/*   Updated: 2019/12/17 18:37:46 by ikhadem          ###   ########.fr       */
+/*   Updated: 2019/12/18 18:09:49 by ikhadem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@
 
 typedef struct	s_point
 {
-	int			x;
-	int			y;
+	double		x;
+	double		y;
 }				t_point;
 
-t_point			new_point(int x, int y);
+t_point			new_point(double x, double y);
 void			add_point(t_point p, t_color c);
 void			draw_point(t_point p);
 

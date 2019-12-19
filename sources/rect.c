@@ -6,7 +6,7 @@
 /*   By: ikhadem <ikhadem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/15 16:01:01 by ikhadem           #+#    #+#             */
-/*   Updated: 2019/12/16 03:14:05 by ikhadem          ###   ########.fr       */
+/*   Updated: 2019/12/18 18:10:16 by ikhadem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void		add_rect(t_rect r)
 		i = r.pos.x;
 		while (i <= r.pos.x + r.w)
 		{
-			add_point(new_point(i, j), r.c);
+			add_point(new_point((double)i, (double)j), r.c);
 			i++;
 		}
 		j++;

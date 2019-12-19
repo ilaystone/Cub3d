@@ -6,7 +6,7 @@
 /*   By: ikhadem <ikhadem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/15 14:53:23 by ikhadem           #+#    #+#             */
-/*   Updated: 2019/12/16 03:17:14 by ikhadem          ###   ########.fr       */
+/*   Updated: 2019/12/18 18:10:28 by ikhadem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,14 @@ t_line		new_line(t_point p1, t_point p2, t_color c)
 	return (l);
 }
 
-void		add_line(t_line l, t_point d, t_point s)
+static void	add_line_redirection(t_line l, t_point d, t_point s)
 {
 	int			err;
 	int			e;
 
-	d.x = abs(l.p2.x - l.p1.x);
+	d.x = fabs(l.p2.x - l.p1.x);
 	s.x = l.p1.x < l.p2.x ? 1 : -1;
-	d.y = -abs(l.p2.y - l.p1.y);
+	d.y = -fabs(l.p2.y - l.p1.y);
 	s.y = l.p1.y < l.p2.y ? 1 : -1;
 	err = d.x + d.y;
 	while (1)
@@ -51,8 +51,13 @@ void		add_line(t_line l, t_point d, t_point s)
 	}
 }
 
+void		add_line(t_line l)
+{
+	add_line_redirection(l, new_point(0.0, 0.0), new_point(0.0, 0.0));
+}
+
 void		draw_line(t_line l)
 {
-	add_line(l, new_point(0, 0), new_point(0, 0));
+	add_line(l);
 	mlx_put_image_to_window(g_win.ptr, g_win.win, g_win.img_ptr, 0, 0);
 }

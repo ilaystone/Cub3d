@@ -6,13 +6,13 @@
 /*   By: ikhadem <ikhadem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/15 05:38:30 by ikhadem           #+#    #+#             */
-/*   Updated: 2019/12/16 04:45:37 by ikhadem          ###   ########.fr       */
+/*   Updated: 2019/12/18 18:10:10 by ikhadem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-t_point			new_point(int x, int y)
+t_point			new_point(double x, double y)
 {
 	t_point		p;
 	p.x = x;
