@@ -6,13 +6,13 @@
 /*   By: ikhadem <ikhadem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/15 16:01:01 by ikhadem           #+#    #+#             */
-/*   Updated: 2019/12/18 18:10:16 by ikhadem          ###   ########.fr       */
+/*   Updated: 2019/12/24 03:45:03 by ikhadem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "../includes/cub3d.h"
 
-t_rect		new_rect(int w, int h, t_point p, t_color c)
+t_rect		new_rect(int w, int h, t_vec2 p, t_color c)
 {
 	t_rect r;
 	r.w = w;
@@ -33,7 +33,7 @@ void		add_rect(t_rect r)
 		i = r.pos.x;
 		while (i <= r.pos.x + r.w)
 		{
-			add_point(new_point((double)i, (double)j), r.c);
+			add_vec2(new_vec2((double)i, (double)j), r.c);
 			i++;
 		}
 		j++;

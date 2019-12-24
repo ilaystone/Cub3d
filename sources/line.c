@@ -6,13 +6,13 @@
 /*   By: ikhadem <ikhadem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/15 14:53:23 by ikhadem           #+#    #+#             */
-/*   Updated: 2019/12/18 18:10:28 by ikhadem          ###   ########.fr       */
+/*   Updated: 2019/12/24 18:21:12 by ikhadem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-t_line		new_line(t_point p1, t_point p2, t_color c)
+t_line		new_line(t_vec2 p1, t_vec2 p2, t_color c)
 {
 	t_line	l;
 
@@ -22,38 +22,25 @@ t_line		new_line(t_point p1, t_point p2, t_color c)
 	return (l);
 }
 
-static void	add_line_redirection(t_line l, t_point d, t_point s)
+void	add_line(t_line l)
 {
-	int			err;
-	int			e;
+	int min;
+	int max;
+	int i;
 
-	d.x = fabs(l.p2.x - l.p1.x);
-	s.x = l.p1.x < l.p2.x ? 1 : -1;
-	d.y = -fabs(l.p2.y - l.p1.y);
-	s.y = l.p1.y < l.p2.y ? 1 : -1;
-	err = d.x + d.y;
-	while (1)
+	min = l.p1.y;
+	max = l.p2.y;
+	if (l.p1.y > l.p2.y)
 	{
-		add_point(l.p1, l.c);
-		if (l.p1.x == l.p2.x && l.p1.y == l.p2.y)
-			break ;
-		e = 2 * err;
-		if (e >= d.y)
-		{
-			err += d.y;
-			l.p1.x += s.x;
-		}
-		if (e <= d.x)
-		{
-			err += d.x;
-			l.p1.y += s.y;
-		}
+		min = l.p2.y;
+		max = l.p1.y;
 	}
-}
-
-void		add_line(t_line l)
-{
-	add_line_redirection(l, new_point(0.0, 0.0), new_point(0.0, 0.0));
+	i = min;
+	while (i < max)
+	{
+		add_vec2(new_vec2(l.p1.x, i), l.c);
+		i++;
+	}
 }
 
 void		draw_line(t_line l)

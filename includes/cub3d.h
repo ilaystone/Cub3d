@@ -6,7 +6,7 @@
 /*   By: ikhadem <ikhadem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/13 21:48:39 by ikhadem           #+#    #+#             */
-/*   Updated: 2019/12/17 17:02:45 by ikhadem          ###   ########.fr       */
+/*   Updated: 2019/12/24 20:20:01 by ikhadem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,28 +16,32 @@
 # include <stdlib.h>
 # include <math.h>
 # include <mlx.h>
+# include <stdio.h>
 # include "color.h"
-# include "point.h"
-# include "player.h"
-# include "key.h"
-# include "map.h"
+# include "vec2.h"
 # include "line.h"
 # include "rect.h"
+# include "key.h"
+# include "game.h"
 
-
+# define TRUE 1
+# define FALSE 0
+# define TILE_SIZE 32
 typedef struct	s_canvas
 {
-	void	*ptr;
-	void	*win;
-	void	*img_ptr;
-	int		bpp;
-	int		size_line;
-	int		endian;
-	char	*img_data;
+	t_vec2		resolution;
+	void		*ptr;
+	void		*win;
+	void		*img_ptr;
+	int			bpp;
+	int			size_line;
+	int			endian;
+	char		*img_data;
 }				t_canvas;
 
 t_canvas		g_win;
 
-void			canvas_init(int w, int h, char *title);
+void			canvas_init(t_vec2 pos, char *title);
+void			reset_image();
 
 #endif

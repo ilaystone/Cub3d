@@ -6,7 +6,7 @@
 /*   By: ikhadem <ikhadem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 02:58:50 by ikhadem           #+#    #+#             */
-/*   Updated: 2019/12/18 20:29:47 by ikhadem          ###   ########.fr       */
+/*   Updated: 2019/12/24 03:42:39 by ikhadem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,9 @@ typedef struct	s_color
 	int			r;
 	int			g;
 	int			b;
+	int			a;
 }				t_color;
 
-t_color			new_color(int r, int g, int b);
+t_color			new_color(int r, int g, int b, int a);
 
 #endif
