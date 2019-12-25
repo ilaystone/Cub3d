@@ -6,7 +6,7 @@
 /*   By: ikhadem <ikhadem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 03:50:34 by ikhadem           #+#    #+#             */
-/*   Updated: 2019/12/24 20:23:17 by ikhadem          ###   ########.fr       */
+/*   Updated: 2019/12/24 21:17:41 by ikhadem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,6 @@ void line_size(t_game *g)
 	else
 		g->cam.perpewalldist = (double)((g->cam.mapy - g->cam.posy +(1 - g->cam.stepy) / 2) / g->cam.raydiry);
 	g->cam.lineheight = (int)(g_win.resolution.y / g->cam.perpewalldist);
-	if (g->cam.perpewalldist == 0)
-		g->cam.lineheight = g_win.resolution.y;
 	g->cam.drawstart = -g->cam.lineheight / 2 + g_win.resolution.y / 2;
 	if (g->cam.drawstart < 0)
 		g->cam.drawstart = 0;

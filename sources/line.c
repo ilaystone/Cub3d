@@ -6,7 +6,7 @@
 /*   By: ikhadem <ikhadem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/15 14:53:23 by ikhadem           #+#    #+#             */
-/*   Updated: 2019/12/24 18:21:12 by ikhadem          ###   ########.fr       */
+/*   Updated: 2019/12/25 09:44:06 by ikhadem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,22 +24,29 @@ t_line		new_line(t_vec2 p1, t_vec2 p2, t_color c)
 
 void	add_line(t_line l)
 {
-	int min;
-	int max;
-	int i;
+	t_plot	plot;
 
-	min = l.p1.y;
-	max = l.p2.y;
-	if (l.p1.y > l.p2.y)
+	plot.dx = abs((int)l.p2.x - (int)l.p1.x);
+	plot.sx = l.p1.x < l.p2.x ? 1 : -1;
+	plot.dy= -abs((int)l.p2.y - (int)l.p1.y);
+	plot.sy = l.p1.y < l.p2.y ? 1 : -1;
+	plot.err = plot.dx + plot.dy;
+	while (1)
 	{
-		min = l.p2.y;
-		max = l.p1.y;
-	}
-	i = min;
-	while (i < max)
-	{
-		add_vec2(new_vec2(l.p1.x, i), l.c);
-		i++;
+		add_vec2(new_vec2(l.p1.x, l.p1.y), l.c);
+		if (l.p1.x == l.p2.x && l.p1.y == l.p2.y)
+			break ;
+		plot.e2 = 2 * plot.err;
+		if (plot.e2 >= plot.dy)
+		{
+			plot.err += plot.dy;
+			l.p1.x += plot.sx;
+		}
+		if (plot.e2 <= plot.dx)
+		{
+			plot.err += plot.dx;
+			l.p1.y += plot.sy;
+		}
 	}
 }
 

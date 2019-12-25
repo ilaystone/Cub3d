@@ -6,7 +6,7 @@
 /*   By: ikhadem <ikhadem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/21 23:27:42 by ikhadem           #+#    #+#             */
-/*   Updated: 2019/12/24 20:34:05 by ikhadem          ###   ########.fr       */
+/*   Updated: 2019/12/25 09:47:29 by ikhadem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void update_player_pos(t_game *g)
 	double	mv;
 	double	olddirx;
 	double	oldplanex;
-	int 	j;
+	int		j;
 
 	rt = g->cam.turn * (2.0 * M_PI / 180);
 	mv = g->cam.move * 0.05;
@@ -65,12 +65,12 @@ void update_player_pos(t_game *g)
 	}
 	if (g->cam.move != 0)
 	{
-		j = g->cam.posx + g->cam.dirx * mv + (g->cam.posy + g->cam.diry * mv) * g->map.width;
+		j = (int)(g->cam.posx + g->cam.dirx) * mv + g->cam.posy * g->map.width;
 		if (g->map.grid[j] != '1')
-		{
 			g->cam.posx += g->cam.dirx * mv;
+		j = g->cam.posx + (int)(g->cam.posy + g->cam.diry * mv) * g->map.width;
+		if (g->map.grid[j] != '1')
 			g->cam.posy += g->cam.diry * mv;
-		}
 	}
 }
 
