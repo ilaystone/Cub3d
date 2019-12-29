@@ -6,7 +6,7 @@
 #    By: ikhadem <ikhadem@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/13 19:57:44 by ikhadem           #+#    #+#              #
-#    Updated: 2019/12/24 04:51:29 by ikhadem          ###   ########.fr        #
+#    Updated: 2019/12/29 10:36:58 by ikhadem          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,10 +22,13 @@ SRC :=	main.c \
 		sources/line.c \
 		sources/rect.c \
 		sources/color.c \
-		sources/game.c \
-		sources/caster.c
+		sources/walls.c \
+		sources/caster.c \
+		sources/floor_ceil.c
 
 
 all:
-	@$(CC) $(CFLAGS) $(SRC) -g -lmlx -framework OpenGl -framework AppKit
+	@make -C minilibx/
+	@$(CC) $(CFLAGS) $(SRC) minilibx/libmlx.a -lz -framework OpenGl	\
+			-framework AppKit
 	@echo "Done"

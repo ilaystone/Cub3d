@@ -6,7 +6,7 @@
 /*   By: ikhadem <ikhadem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/21 23:27:42 by ikhadem           #+#    #+#             */
-/*   Updated: 2019/12/25 09:47:29 by ikhadem          ###   ########.fr       */
+/*   Updated: 2019/12/29 16:00:53 by ikhadem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,12 @@
 #include <stdlib.h>
 #include <string.h>
 #include "includes/cub3d.h"
+
+int	exit_game(t_game *g)
+{
+	(void)g;
+	exit(0);
+}
 
 int key_press(int key, t_game *g)
 {
@@ -28,6 +34,8 @@ int key_press(int key, t_game *g)
 		g->cam.move = 1;
 	else if (key == K_DOWN)
 		g->cam.move = -1;
+	else
+		printf("%d\n", key);
 	return (0);
 }
 
@@ -52,7 +60,7 @@ void update_player_pos(t_game *g)
 	double	oldplanex;
 	int		j;
 
-	rt = g->cam.turn * (2.0 * M_PI / 180);
+	rt = g->cam.turn * (1.5 * M_PI / 180);
 	mv = g->cam.move * 0.05;
 	if (g->cam.turn != 0)
 	{
@@ -65,12 +73,12 @@ void update_player_pos(t_game *g)
 	}
 	if (g->cam.move != 0)
 	{
-		j = (int)(g->cam.posx + g->cam.dirx) * mv + g->cam.posy * g->map.width;
-		if (g->map.grid[j] != '1')
+		j = (int)(g->cam.posx + g->cam.dirx * mv) + (int)(g->cam.posy + g->cam.diry * mv) * g->map.width;
+		if (g->map.grid[j] == '0')
+		{
 			g->cam.posx += g->cam.dirx * mv;
-		j = g->cam.posx + (int)(g->cam.posy + g->cam.diry * mv) * g->map.width;
-		if (g->map.grid[j] != '1')
 			g->cam.posy += g->cam.diry * mv;
+		}
 	}
 }
 
@@ -79,6 +87,7 @@ int update(t_game *game)
 	reset_image();
 	update_player_pos(game);
 	cast_rays(game);
+	//draw_minimap(game);
 	mlx_put_image_to_window(g_win.ptr, g_win.win, g_win.img_ptr, 0, 0);
 	return (0);
 }
@@ -101,9 +110,15 @@ int main()
 	game.map = map;
 	game.cam = cam;
 	canvas_init(new_vec2(1600, 900), "CUB3D");
-	mlx_put_image_to_window(g_win.ptr, g_win.win, g_win.img_ptr, 0, 0);
+	game.t[0] = get_texture("./pics/colorstone.png");
+	game.t[1] = get_texture("./pics/bluestone.png");
+	game.t[2] = get_texture("./pics/greystone.png");
+	game.t[3] = get_texture("./pics/redbrick.png");
+	game.t[4] = get_texture("./pics/wal8.png");
+	game.t[5] = get_texture("./pics/wal5.png");
 	mlx_hook(g_win.win, 2, 0, key_press, &game);
 	mlx_hook(g_win.win, 3, 0, key_release, &game);
+	mlx_hook(g_win.win, 17, 0, exit_game, &game);
 	mlx_loop_hook(g_win.ptr, update, &game);
 	mlx_loop(g_win.ptr);
 	return (0);

@@ -9,6 +9,7 @@
 		"vec2.h": "c",
 		"line.h": "c",
 		"rect.h": "c",
-		"cmath": "cpp"
+		"cmath": "cpp",
+		"algorithm": "c"
 	}
 }

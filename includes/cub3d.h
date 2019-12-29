@@ -6,7 +6,7 @@
 /*   By: ikhadem <ikhadem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/13 21:48:39 by ikhadem           #+#    #+#             */
-/*   Updated: 2019/12/24 20:20:01 by ikhadem          ###   ########.fr       */
+/*   Updated: 2019/12/28 18:29:15 by ikhadem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 # include <stdlib.h>
 # include <math.h>
-# include <mlx.h>
 # include <stdio.h>
+# include "../minilibx/mlx.h"
 # include "color.h"
 # include "vec2.h"
 # include "line.h"
@@ -26,7 +26,10 @@
 
 # define TRUE 1
 # define FALSE 0
-# define TILE_SIZE 32
+# define NORTH 0
+# define SOUTH 1
+# define EAST 2
+# define WEST 3
 typedef struct	s_canvas
 {
 	t_vec2		resolution;

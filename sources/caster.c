@@ -6,7 +6,7 @@
 /*   By: ikhadem <ikhadem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 03:50:34 by ikhadem           #+#    #+#             */
-/*   Updated: 2019/12/24 21:17:41 by ikhadem          ###   ########.fr       */
+/*   Updated: 2019/12/29 11:46:57 by ikhadem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,17 +59,17 @@ void calc(t_game *g)
 	}
 }
 
-
-
 void line_size(t_game *g)
 {
 	if (g->cam.side == 0)
 		g->cam.perpewalldist = (double)((g->cam.mapx - g->cam.posx +(1 - g->cam.stepx) / 2) / g->cam.raydirx);
 	else
 		g->cam.perpewalldist = (double)((g->cam.mapy - g->cam.posy +(1 - g->cam.stepy) / 2) / g->cam.raydiry);
+	if (g->cam.perpewalldist <= 0.05)
+		g->cam.perpewalldist = 0.05;
 	g->cam.lineheight = (int)(g_win.resolution.y / g->cam.perpewalldist);
 	g->cam.drawstart = -g->cam.lineheight / 2 + g_win.resolution.y / 2;
-	if (g->cam.drawstart < 0)
+	if (g->cam.drawstart <= 0)
 		g->cam.drawstart = 0;
 	g->cam.drawend = g->cam.lineheight / 2 + g_win.resolution.y / 2;
 	if (g->cam.drawend >= g_win.resolution.y)
@@ -78,25 +78,8 @@ void line_size(t_game *g)
 
 void create_world(t_game *g)
 {
-	t_color c;
-	t_line l;
-	int j;
-
-	j = g->map.width * g->cam.mapy + g->cam.mapx;
-	if (g->map.grid[j] == '1')
-		c = new_color(255, 0, 0, 0);
-	else if (g->map.grid[j] == '2')
-		c = new_color(0, 255, 0, 0); 
-	if (g->cam.side == 1)
-	{
-		c.r /= 2;
-		c.g /= 2;
-		c.b /= 2;
-	}
-	l.p1 = new_vec2(g->cam.id, g->cam.drawstart);
-	l.p2 = new_vec2(g->cam.id, g->cam.drawend);
-	l.c = c;
-	add_line(l);
+	draw_walls(g);
+	cast_floor(g);
 }
 
 void cast_rays(t_game *g)
@@ -104,6 +87,7 @@ void cast_rays(t_game *g)
 	int x;
 
 	x = 0;
+	cast_floor(g);
 	while (x < g_win.resolution.x)
 	{
 		g->cam.camerax = 2 * x / (double)g_win.resolution.x - 1;
