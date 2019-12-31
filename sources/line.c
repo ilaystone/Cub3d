@@ -6,7 +6,7 @@
 /*   By: ikhadem <ikhadem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/15 14:53:23 by ikhadem           #+#    #+#             */
-/*   Updated: 2019/12/25 09:44:06 by ikhadem          ###   ########.fr       */
+/*   Updated: 2019/12/29 17:35:54 by ikhadem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,13 @@ t_line		new_line(t_vec2 p1, t_vec2 p2, t_color c)
 	return (l);
 }
 
-void	add_line(t_line l)
+void		add_line(t_line l)
 {
 	t_plot	plot;
 
 	plot.dx = abs((int)l.p2.x - (int)l.p1.x);
 	plot.sx = l.p1.x < l.p2.x ? 1 : -1;
-	plot.dy= -abs((int)l.p2.y - (int)l.p1.y);
+	plot.dy = -abs((int)l.p2.y - (int)l.p1.y);
 	plot.sy = l.p1.y < l.p2.y ? 1 : -1;
 	plot.err = plot.dx + plot.dy;
 	while (1)

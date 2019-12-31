@@ -6,7 +6,7 @@
 /*   By: ikhadem <ikhadem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/15 14:53:48 by ikhadem           #+#    #+#             */
-/*   Updated: 2019/12/25 19:40:07 by ikhadem          ###   ########.fr       */
+/*   Updated: 2019/12/29 18:00:29 by ikhadem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ typedef struct	s_plot
 }				t_plot;
 
 t_line			new_line(t_vec2 p1, t_vec2 p2, t_color c);
-void			add_line(t_line l);;
+void			add_line(t_line l);
 void			draw_line(t_line l);
 
 #endif

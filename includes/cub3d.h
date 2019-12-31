@@ -6,7 +6,7 @@
 /*   By: ikhadem <ikhadem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/13 21:48:39 by ikhadem           #+#    #+#             */
-/*   Updated: 2019/12/28 18:29:15 by ikhadem          ###   ########.fr       */
+/*   Updated: 2019/12/30 21:23:29 by ikhadem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 # define SOUTH 1
 # define EAST 2
 # define WEST 3
+
 typedef struct	s_canvas
 {
 	t_vec2		resolution;

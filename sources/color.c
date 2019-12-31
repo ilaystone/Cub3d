@@ -6,7 +6,7 @@
 /*   By: ikhadem <ikhadem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 03:00:34 by ikhadem           #+#    #+#             */
-/*   Updated: 2019/12/24 03:44:50 by ikhadem          ###   ########.fr       */
+/*   Updated: 2019/12/29 17:34:32 by ikhadem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 t_color		new_color(int r, int g, int b, int a)
 {
 	t_color c;
+
 	c.r = r;
 	c.g = g;
 	c.b = b;

@@ -6,7 +6,7 @@
 /*   By: ikhadem <ikhadem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/15 05:38:30 by ikhadem           #+#    #+#             */
-/*   Updated: 2019/12/24 03:45:05 by ikhadem          ###   ########.fr       */
+/*   Updated: 2019/12/29 17:36:43 by ikhadem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 t_vec2			new_vec2(double x, double y)
 {
 	t_vec2		p;
+
 	p.x = x;
 	p.y = y;
 	return (p);

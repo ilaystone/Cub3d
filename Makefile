@@ -6,7 +6,7 @@
 #    By: ikhadem <ikhadem@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/13 19:57:44 by ikhadem           #+#    #+#              #
-#    Updated: 2019/12/29 10:36:58 by ikhadem          ###   ########.fr        #
+#    Updated: 2019/12/30 21:51:14 by ikhadem          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,9 @@ SRC :=	main.c \
 		sources/color.c \
 		sources/walls.c \
 		sources/caster.c \
-		sources/floor_ceil.c
+		sources/floor_ceil.c \
+		sources/sprites.c \
+		sources/sprites_utils.c
 
 
 all:

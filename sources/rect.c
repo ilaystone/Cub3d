@@ -6,15 +6,16 @@
 /*   By: ikhadem <ikhadem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/15 16:01:01 by ikhadem           #+#    #+#             */
-/*   Updated: 2019/12/24 03:45:03 by ikhadem          ###   ########.fr       */
+/*   Updated: 2019/12/29 17:36:27 by ikhadem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../includes/cub3d.h"
+#include "../includes/cub3d.h"
 
 t_rect		new_rect(int w, int h, t_vec2 p, t_color c)
 {
 	t_rect r;
+
 	r.w = w;
 	r.h = h;
 	r.pos = p;

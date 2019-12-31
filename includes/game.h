@@ -6,7 +6,7 @@
 /*   By: ikhadem <ikhadem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 03:44:15 by ikhadem           #+#    #+#             */
-/*   Updated: 2019/12/29 11:50:28 by ikhadem          ###   ########.fr       */
+/*   Updated: 2019/12/30 22:41:03 by ikhadem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 # define GAME_H
 
 # include "cub3d.h"
+
+# define SPRITENUM 1000
+# define MAX_WIDTH 2560
+# define MAX_HEIGHT 1440
 
 typedef struct	s_map
 {
@@ -50,9 +54,18 @@ typedef struct	s_cam
 	int			id;
 	int			move;
 	int			turn;
-	int			tex_num;
 }				t_cam;
 
+typedef struct	s_draw
+{
+	int			a;
+	int			d;
+	int			y;
+	int			texy;
+	int			texx;
+	int			pos;
+	int			pos2;
+}				t_draw;
 typedef struct	s_tex
 {
 	int			bpp;
@@ -81,17 +94,34 @@ typedef struct	s_fc
 	int			texx;
 	int			texy;
 }				t_fc;
+
+typedef struct  s_sprite
+{
+	t_vec2			pos;
+    char         	id;
+}               t_sprite;
+
 typedef struct	s_game
 {
 	t_map		map;
 	t_cam		cam;
-	t_tex		t[6];
+	t_tex		t[7];
 	t_fc		dfc;
+	t_sprite	slst[SPRITENUM];
+	int			spcount;
+	int			sprite_ordre[SPRITENUM];
+	double		zbuff[MAX_WIDTH];
+	double		sprite_distance[SPRITENUM];
 }				t_game;
+
 
 void			cast_rays(t_game *g);
 t_tex			get_texture(char *file_name);
 void			draw_walls(t_game *g);
 void			cast_floor(t_game *g);
+void			draw_sprites(t_game *g);
+t_sprite		new_sprite(t_vec2 pos, char id);
+void			get_all_sprites(t_game *g);
+void			sort_sprites(t_game *g);
 
 #endif
