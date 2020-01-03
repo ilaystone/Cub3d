@@ -6,7 +6,7 @@
 /*   By: ikhadem <ikhadem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/29 10:13:36 by ikhadem           #+#    #+#             */
-/*   Updated: 2019/12/29 17:55:35 by ikhadem          ###   ########.fr       */
+/*   Updated: 2020/01/03 02:03:23 by ikhadem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 
 static void	ceiling(t_game *g, int pos, int pos2)
 {
-	g_win.img_data[pos2] = g->t[4].img_ptr[pos];
-	g_win.img_data[pos2 + 1] = g->t[4].img_ptr[pos + 1];
-	g_win.img_data[pos2 + 2] = g->t[4].img_ptr[pos + 2];
+	g_win.img_data[pos2] = g->t[28].img_ptr[pos];
+	g_win.img_data[pos2 + 1] = g->t[28].img_ptr[pos + 1];
+	g_win.img_data[pos2 + 2] = g->t[28].img_ptr[pos + 2];
 }
 
 static void	ground(t_game *g, int pos, int pos2)
 {
-	g_win.img_data[pos2] = g->t[5].img_ptr[pos];
-	g_win.img_data[pos2 + 1] = g->t[5].img_ptr[pos + 1];
-	g_win.img_data[pos2 + 2] = g->t[5].img_ptr[pos + 2];
+	g_win.img_data[pos2] = g->t[29].img_ptr[pos];
+	g_win.img_data[pos2 + 1] = g->t[29].img_ptr[pos + 1];
+	g_win.img_data[pos2 + 2] = g->t[29].img_ptr[pos + 2];
 }
 
 static void	draw_vertical_stripes(t_game *g)
@@ -43,9 +43,9 @@ static void	draw_vertical_stripes(t_game *g)
 			g->cam.posx;
 		g->dfc.fy = g->dfc.weight * g->dfc.fywall + (1.0 - g->dfc.weight) *\
 			g->cam.posy;
-		g->dfc.texx = (int)(g->dfc.fx * g->t[4].w) % g->t[4].w;
-		g->dfc.texy = (int)(g->dfc.fy * g->t[4].h) % g->t[4].h;
-		pos = g->dfc.texx * 4 + g->dfc.texy * 4 * g->t[4].h;
+		g->dfc.texx = (int)(g->dfc.fx * g->t[28].w) % g->t[28].w;
+		g->dfc.texy = (int)(g->dfc.fy * g->t[28].h) % g->t[28].h;
+		pos = g->dfc.texx * 4 + g->dfc.texy * 4 * g->t[28].h;
 		pos2 = g->cam.id * 4 + g_win.resolution.x * 4 * y;
 		ceiling(g, pos, pos2);
 		pos2 = g->cam.id * 4 + g_win.resolution.x * 4 *\

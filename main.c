@@ -6,7 +6,7 @@
 /*   By: ikhadem <ikhadem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/21 23:27:42 by ikhadem           #+#    #+#             */
-/*   Updated: 2019/12/31 03:33:54 by ikhadem          ###   ########.fr       */
+/*   Updated: 2020/01/03 02:13:07 by ikhadem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,33 +99,41 @@ int update(t_game *game)
 	return (0);
 }
 
-int main()
+int main(int ac, char *av[])
 {
-	t_map map;
-	t_cam cam;
+	// t_map map;
+	// t_cam cam;
 	t_game game;
 
-	map.width = 29;
-	map.height = 14;
-	map.grid = strdup("11111111111111111111111111111100000000011000000000000000011011000001110002020200010001100100000000000000000000100011011000001110000000000001000110000000001100000111011110001111101111111110111000000100011111011111111101110101001000111000000110101011100000010001100020000000000011000000100011000000000000000110101001000111000000110101011111011110N011111011111110101111101111000111111111111111111111111111111");
-	cam.posx = 2;
-	cam.posy = 2;
-	cam.dirx = -1;
-	cam.diry = 0;
-	cam.planex = 0;
-	cam.planey = 0.66;
-	game.map = map;
-	game.cam = cam;
-	game.spcount = 0;
-	get_all_sprites(&game);
-	canvas_init(new_vec2(1600, 900), "CUB3D");
-	game.t[0] = get_texture("./pics/colorstone.png");
-	game.t[1] = get_texture("./pics/bluestone.png");
-	game.t[2] = get_texture("./pics/greystone.png");
-	game.t[3] = get_texture("./pics/redbrick.png");
-	game.t[4] = get_texture("./pics/mossy.png");
-	game.t[5] = get_texture("./pics/wood.png");
-	game.t[6] = get_texture("./pics/barrel.png");
+	// map.width = 29;
+	// map.height = 14;
+	// map.grid = strdup("1111111111111111111111111111110000000001100000000000000001101100000111000000200000100011001000000000000000000001000110110000011100000000000010001100000000011000001110111100011111011111111101110000001000111110111111111011101010010001110000001101010111000000100011000200000000000110000001000110000000000000001101010010001110000001101010111110111100011111011111110101111101111000111111111111111111111111111111");
+	// cam.posx = 26;
+	// cam.posy = 11;
+	// cam.dirx = 0;
+	// cam.diry = 0;
+	// cam.planex = 0;
+	// cam.planey = 0.66;
+	// game.map = map;
+	// game.cam = cam;
+	// game.spcount = 0;
+	// get_all_sprites(&game);
+	// canvas_init(new_vec2(1600, 900), "CUB3D");
+	// game.t[0] = get_texture("./pics/colorstone.png");
+	// game.t[1] = get_texture("./pics/bluestone.png");
+	// game.t[2] = get_texture("./pics/greystone.png");
+	// game.t[3] = get_texture("./pics/redbrick.png");
+	// game.t[4] = get_texture("./pics/mossy.png");
+	// game.t[5] = get_texture("./pics/wood.png");
+	// game.t[6] = get_texture("./pics/kirby2.png");
+	// update(&game);
+	// save_bmp_image(&game);
+	if (!check_extention(av[1]))
+	{
+		ft_puterror("wrong file format:\n\tusage: ./cub3D <name>.cub\n");
+		exit (EXIT_FAILURE);
+	}
+	game = init_game(av[1]);
 	mlx_hook(g_win.win, 2, 0, key_press, &game);
 	mlx_hook(g_win.win, 3, 0, key_release, &game);
 	mlx_hook(g_win.win, 17, 0, exit_game, &game);

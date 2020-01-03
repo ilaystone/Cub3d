@@ -1,15 +1,7 @@
 {
-    "files.associations": {
+	"files.associations": {
 		"cub3d.h": "c",
-		"mlx.h": "c",
-		"key.h": "c",
-		"__tree": "c",
-		"map": "c",
-		"color.h": "c",
-		"vec2.h": "c",
-		"line.h": "c",
-		"rect.h": "c",
-		"cmath": "cpp",
-		"algorithm": "c"
+		"sstream": "c",
+		"bitset": "c"
 	}
 }

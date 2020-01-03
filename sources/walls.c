@@ -6,7 +6,7 @@
 /*   By: ikhadem <ikhadem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 03:49:07 by ikhadem           #+#    #+#             */
-/*   Updated: 2019/12/29 17:48:02 by ikhadem          ###   ########.fr       */
+/*   Updated: 2020/01/02 01:19:43 by ikhadem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,11 @@ t_tex		get_texture(char *file_name)
 	t_tex	data;
 
 	data.img = mlx_png_file_to_image(g_win.ptr, file_name, &data.w, &data.h);
+	if (!data.img)
+	{
+		ft_puterror("please verify the path !!\n");
+		exit(-1);
+	}
 	data.img_ptr = mlx_get_data_addr(data.img, &data.bpp, &data.size_line,\
 						&data.endian);
 	return (data);
