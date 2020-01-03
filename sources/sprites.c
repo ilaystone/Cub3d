@@ -6,7 +6,7 @@
 /*   By: ikhadem <ikhadem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/29 18:31:11 by ikhadem           #+#    #+#             */
-/*   Updated: 2020/01/03 02:29:22 by ikhadem          ###   ########.fr       */
+/*   Updated: 2020/01/03 04:26:36 by ikhadem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,27 +72,26 @@ static void	sprite_rendering(t_game *g, t_draw *v, t_sp_draw *d)
 	int		pos;
 
 	pos = get_id(g, d);
-	printf("%d", pos);
 	for (int stripe = d->draw_startx; stripe < d->draw_endx; stripe++)
 	{
 		v->texx = (int)(256 * (stripe - (-d->sprite_width / 2 +\
-			d->spritescreenx))) * g->t[pos + 2].w / d->sprite_width / 256;
+			d->spritescreenx))) * g->t[pos + 4].w / d->sprite_width / 256;
 		if (d->transformy > 0 && stripe > 0 && stripe < g_win.resolution.x\
 			&& d->transformy < g->zbuff[stripe])
 			for (int y = d->draw_starty; y < d->draw_endy; y++)
 			{
 				v->d = y * 256 - g_win.resolution.y * 128 + d->sprite_height *\
 					128;
-				v->texy = ((v->d * g->t[pos + 2].h) / d->sprite_height) / 256;
-				v->pos = g->t[pos + 2].w * 4 * v->texy + 4 * v->texx;
+				v->texy = ((v->d * g->t[pos + 4].h) / d->sprite_height) / 256;
+				v->pos = g->t[pos + 4].w * 4 * v->texy + 4 * v->texx;
 				v->pos2 = stripe * 4 + g_win.resolution.x * 4 * y;
-				if (g->t[pos + 2].img_ptr[v->pos] != (char)0 &&
-					g->t[pos + 2].img_ptr[v->pos + 1] != (char)0 &&
-					g->t[pos + 2].img_ptr[v->pos + 2] != (char)0)
+				if (g->t[pos + 4].img_ptr[v->pos] != (char)0 &&
+					g->t[pos + 4].img_ptr[v->pos + 1] != (char)0 &&
+					g->t[pos + 4].img_ptr[v->pos + 2] != (char)0)
 				{
-					g_win.img_data[v->pos2] = g->t[pos + 2].img_ptr[v->pos];
-					g_win.img_data[v->pos2 + 1] = g->t[pos + 2].img_ptr[v->pos + 1];
-					g_win.img_data[v->pos2 + 2] = g->t[pos + 2].img_ptr[v->pos + 2];
+					g_win.img_data[v->pos2] = g->t[pos + 4].img_ptr[v->pos];
+					g_win.img_data[v->pos2 + 1] = g->t[pos + 4].img_ptr[v->pos + 1];
+					g_win.img_data[v->pos2 + 2] = g->t[pos + 4].img_ptr[v->pos + 2];
 				}
 			}
 	}

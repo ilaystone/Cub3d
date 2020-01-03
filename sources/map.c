@@ -6,7 +6,7 @@
 /*   By: ikhadem <ikhadem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 21:39:25 by ikhadem           #+#    #+#             */
-/*   Updated: 2020/01/03 01:12:10 by ikhadem          ###   ########.fr       */
+/*   Updated: 2020/01/03 04:25:56 by ikhadem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,14 @@ void		verify_map(t_game *game)
 	while (i < game->map.width)
 		if (game->map.grid[i++] != '1')
 			exit_msg("map should be delimited by '1'(Walls) !!");
-	while (j < game->map.height - 1)
+	while (j < game->map.height - 2)
 	{
 		if (game->map.grid[i] != '1')
 			exit_msg("map should be delimited by '1'(Walls) !!");
-		i += game->map.width - 1;
+		i += (game->map.width - 1);
 		if (game->map.grid[i] != '1')
 			exit_msg("map should be delimited by '1'(Walls) !!");
-		i += 1;
+		i++;
 		j++;
 	}
 	while (i < game->map.width * game->map.height)
