@@ -6,7 +6,7 @@
 /*   By: ikhadem <ikhadem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/13 21:48:39 by ikhadem           #+#    #+#             */
-/*   Updated: 2020/01/01 18:16:39 by ikhadem          ###   ########.fr       */
+/*   Updated: 2020/01/04 04:35:50 by ikhadem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,10 @@
 # include <unistd.h>
 # include <errno.h>
 # include <string.h>
-# include "../minilibx/mlx.h"
-# include "../GNL/get_next_line.h"
+# include "SDL.h"
+# include "SDL_mixer.h"
+# include "mlx.h"
+# include "get_next_line.h"
 # include "utils.h"
 # include "color.h"
 # include "vec2.h"

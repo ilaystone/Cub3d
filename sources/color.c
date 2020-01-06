@@ -6,13 +6,13 @@
 /*   By: ikhadem <ikhadem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/16 03:00:34 by ikhadem           #+#    #+#             */
-/*   Updated: 2020/01/02 16:39:43 by ikhadem          ###   ########.fr       */
+/*   Updated: 2020/01/04 00:30:27 by ikhadem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "cub3d.h"
 
-t_color 	new_color(int r, int g, int b, int a)
+t_color		new_color(int r, int g, int b, int a)
 {
 	t_color	c;
 

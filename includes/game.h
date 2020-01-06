@@ -6,7 +6,7 @@
 /*   By: ikhadem <ikhadem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 03:44:15 by ikhadem           #+#    #+#             */
-/*   Updated: 2020/01/03 01:14:42 by ikhadem          ###   ########.fr       */
+/*   Updated: 2020/01/06 05:00:09 by ikhadem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # define SPRITENUM 1000
 # define MAX_WIDTH 2560
 # define MAX_HEIGHT 1440
+# define MIN_WIDTH 340
+# define MIN_HEIGHT 200
 # define TITLE "cub3d"
 
 typedef struct	s_map
@@ -54,7 +56,8 @@ typedef struct	s_cam
 	int			drawend;
 	int			id;
 	int			move;
-	int			turn;
+	int			move_h;
+	double		turn;
 }				t_cam;
 
 typedef struct	s_draw
@@ -114,25 +117,32 @@ typedef struct	s_sp_draw
 	int			id;
 }				t_sp_draw;
 
-typedef struct  s_sprite
+typedef struct	s_sprite
 {
-	t_vec2			pos;
-    char         	id;
-}               t_sprite;
+	t_vec2		pos;
+	char		id;
+}				t_sprite;
 
 typedef struct	s_game
 {
 	t_map		map;
 	t_cam		cam;
 	t_tex		t[20];
+	t_tex		w[6];
 	t_fc		dfc;
 	t_sprite	slst[SPRITENUM];
 	int			is_fc_rgb;
 	t_color		color[2];
 	int			spcount;
-	int			sprite_ordre[SPRITENUM];
+	int		    sprite_ordre[SPRITENUM];
 	double		zbuff[MAX_WIDTH];
 	double		sprite_distance[SPRITENUM];
+	Mix_Chunk	*run;
+	Mix_Chunk	*Gun;
+	int			chacha;
+	int			kaka;
+	int			kaco;
+	t_tex		gun;
 }				t_game;
 
 typedef struct	s_parser
@@ -169,5 +179,12 @@ void			check_map(t_game *game, char *str);
 void			verify_map(t_game *game);
 void			verify_sprites(t_game *game, t_parser *p);
 void			set_cam(t_game *game);
+int				key_press(int key, t_game *g);
+int				key_release(int key, t_game *g);
+void			update_player_pos(t_game *g);
+int				mouse_press(int button, int x, int y, t_game *g);
+int				mouse_release(int button, int x, int y, t_game *g);
+int				mouse_move(int x, int y, t_game *g);
+void			move_camera(t_game *g, double rt);
 
 #endif

@@ -1,0 +1,15 @@
+R 1600 900
+
+NO ./ashcanyon_bk/south.png
+WE ./ashcanyon_bk/east.png
+EA ./ashcanyon_bk/west.png
+SO ./ashcanyon_bk/north.png
+
+FT ./ashcanyon_bk/floor.png
+CT ./ashcanyon_bk/sky.png
+
+11111
+1N101
+11101
+10001
+11111

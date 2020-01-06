@@ -6,11 +6,11 @@
 /*   By: ikhadem <ikhadem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 21:39:25 by ikhadem           #+#    #+#             */
-/*   Updated: 2020/01/03 04:25:56 by ikhadem          ###   ########.fr       */
+/*   Updated: 2020/01/04 00:30:46 by ikhadem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "cub3d.h"
 
 void		set_map(t_game *game, char *str)
 {

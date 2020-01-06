@@ -6,11 +6,11 @@
 /*   By: ikhadem <ikhadem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/03 01:11:18 by ikhadem           #+#    #+#             */
-/*   Updated: 2020/01/03 02:09:38 by ikhadem          ###   ########.fr       */
+/*   Updated: 2020/01/06 02:36:17 by ikhadem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "cub3d.h"
 
 static void	set_north(t_game *game, int *i, int id)
 {

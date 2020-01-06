@@ -6,22 +6,23 @@
 /*   By: ikhadem <ikhadem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 01:08:25 by ikhadem           #+#    #+#             */
-/*   Updated: 2020/01/03 02:01:44 by ikhadem          ###   ########.fr       */
+/*   Updated: 2020/01/04 00:30:24 by ikhadem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "cub3d.h"
 
-void		exit_msg(char *msg)
+void			exit_msg(char *msg)
 {
 	ft_puterror(msg);
 	ft_putchar('\n');
 	exit(-1);
 }
 
-void		check_resolution(char *str)
+void			check_resolution(char *str)
 {
 	t_vec2		res;
+
 	if (str[0] == 'R')
 	{
 		res = init_resolution(str);
@@ -47,10 +48,11 @@ void			check_sprite(t_game *game, char *str, int tex_num)
 
 void			check_fc_rgb(t_game *game, char *str, int id)
 {
-	game->is_fc_rgb = 1;
 	int r;
 	int g;
 	int b;
+
+	game->is_fc_rgb = 1;
 	if (ft_isdigit(str[0]))
 	{
 		game->color[id] = get_color_from_string(str);

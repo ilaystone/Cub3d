@@ -6,11 +6,11 @@
 /*   By: ikhadem <ikhadem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/15 04:07:59 by ikhadem           #+#    #+#             */
-/*   Updated: 2019/12/29 17:35:09 by ikhadem          ###   ########.fr       */
+/*   Updated: 2020/01/04 00:30:31 by ikhadem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "cub3d.h"
 
 void	canvas_init(t_vec2 pos, char *title)
 {

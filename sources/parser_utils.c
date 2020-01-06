@@ -6,17 +6,19 @@
 /*   By: ikhadem <ikhadem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/01 18:18:25 by ikhadem           #+#    #+#             */
-/*   Updated: 2020/01/03 00:56:39 by ikhadem          ###   ########.fr       */
+/*   Updated: 2020/01/05 18:19:07 by ikhadem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "cub3d.h"
 
 t_vec2		init_resolution(char *str)
 {
 	int		width;
 	int		height;
 
+	width = 0;
+	height = 0;
 	str++;
 	while (ft_isspace(*str))
 		str++;
@@ -24,10 +26,10 @@ t_vec2		init_resolution(char *str)
 	while (ft_isdigit(*str))
 		str++;
 	height = ft_atoi(str);
-	if (width > MAX_WIDTH)
-		exit_msg("resolution height sould be 1440 or less !!");
-	if (height > MAX_HEIGHT)
-		exit_msg("resolution height sould be 1440 or less !!");
+	if (width > MAX_WIDTH || width < MIN_WIDTH)
+		exit_msg("resolution width sould be between 2560 and 340!");
+	if (height > MAX_HEIGHT || height < MIN_HEIGHT)
+		exit_msg("resolution height sould be between 1440 and 200");
 	return (new_vec2(width, height));
 }
 

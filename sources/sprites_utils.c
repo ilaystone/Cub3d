@@ -6,11 +6,11 @@
 /*   By: ikhadem <ikhadem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/30 21:50:19 by ikhadem           #+#    #+#             */
-/*   Updated: 2019/12/31 11:42:39 by ikhadem          ###   ########.fr       */
+/*   Updated: 2020/01/04 00:31:02 by ikhadem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "cub3d.h"
 
 static void		ft_swap_int(int *a, int *b)
 {

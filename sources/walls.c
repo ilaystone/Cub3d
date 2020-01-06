@@ -6,11 +6,11 @@
 /*   By: ikhadem <ikhadem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 03:49:07 by ikhadem           #+#    #+#             */
-/*   Updated: 2020/01/02 01:19:43 by ikhadem          ###   ########.fr       */
+/*   Updated: 2020/01/04 03:06:22 by ikhadem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "cub3d.h"
 
 t_tex		get_texture(char *file_name)
 {

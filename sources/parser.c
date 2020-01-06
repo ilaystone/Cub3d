@@ -6,15 +6,15 @@
 /*   By: ikhadem <ikhadem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/01 16:28:58 by ikhadem           #+#    #+#             */
-/*   Updated: 2020/01/03 02:37:49 by ikhadem          ###   ########.fr       */
+/*   Updated: 2020/01/04 21:03:02 by ikhadem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "cub3d.h"
 
-int			check_extention(char *file)
+int				check_extention(char *file)
 {
-	int		len;
+	int			len;
 
 	len = ft_strlen(file) - 1;
 	if (!file)
@@ -64,7 +64,17 @@ static void		loop_file(t_parser *p, t_game *game)
 	}
 }
 
-t_game		init_game(char *file)
+static int		data_exists(t_game *game)
+{
+	if (!game->map.grid)
+		exit_msg("MAP doesn't exist");
+	if (!game->t[0].img || !game->t[1].img || !game->t[2].img\
+		|| !game->t[3].img)
+		exit_msg("Wall textures Problems");
+	return (1);
+}
+
+t_game			init_game(char *file)
 {
 	t_game		game;
 	t_parser	p;
@@ -73,10 +83,14 @@ t_game		init_game(char *file)
 	if ((p.fd = open(file, O_RDONLY)) < 0)
 		exit_msg("File Not Working !!");
 	loop_file(&p, &game);
-	game.map.height = ft_strlen(game.map.grid) / game.map.width;
-	verify_map(&game);
-	verify_sprites(&game, &p);
-	set_cam(&game);
-	get_all_sprites(&game);
+	if (data_exists(&game))
+	{
+		game.map.height = ft_strlen(game.map.grid) / game.map.width;
+		verify_map(&game);
+		verify_sprites(&game, &p);
+		set_cam(&game);
+		get_all_sprites(&game);
+		close(p.fd);
+	}
 	return (game);
 }

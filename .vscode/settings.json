@@ -1,7 +1,8 @@
 {
 	"files.associations": {
-		"cub3d.h": "c",
-		"sstream": "c",
-		"bitset": "c"
-	}
+        "cub3d.h": "c",
+        "sstream": "c",
+        "bitset": "c",
+        "mlx.h": "c"
+    }
 }

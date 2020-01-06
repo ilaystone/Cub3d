@@ -6,31 +6,51 @@
 /*   By: ikhadem <ikhadem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/29 10:13:36 by ikhadem           #+#    #+#             */
-/*   Updated: 2020/01/03 02:03:23 by ikhadem          ###   ########.fr       */
+/*   Updated: 2020/01/04 00:30:35 by ikhadem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "cub3d.h"
 
-static void	ceiling(t_game *g, int pos, int pos2)
+static void		texturing(t_game *g, int y)
 {
+	int			pos;
+	int			pos2;
+
+	g->dfc.texx = (int)(g->dfc.fx * g->t[28].w) % g->t[28].w;
+	g->dfc.texy = (int)(g->dfc.fy * g->t[28].h) % g->t[28].h;
+	pos = g->dfc.texx * 4 + g->dfc.texy * 4 * g->t[28].h;
+	pos2 = g->cam.id * 4 + g_win.resolution.x * 4 * y;
+	g_win.img_data[pos2] = g->t[29].img_ptr[pos];
+	g_win.img_data[pos2 + 1] = g->t[29].img_ptr[pos + 1];
+	g_win.img_data[pos2 + 2] = g->t[29].img_ptr[pos + 2];
+	pos2 = g->cam.id * 4 + g_win.resolution.x * 4 *\
+			(g_win.resolution.y - y);
 	g_win.img_data[pos2] = g->t[28].img_ptr[pos];
 	g_win.img_data[pos2 + 1] = g->t[28].img_ptr[pos + 1];
 	g_win.img_data[pos2 + 2] = g->t[28].img_ptr[pos + 2];
 }
 
-static void	ground(t_game *g, int pos, int pos2)
+static void		coloring(t_game *g, int y)
 {
-	g_win.img_data[pos2] = g->t[29].img_ptr[pos];
-	g_win.img_data[pos2 + 1] = g->t[29].img_ptr[pos + 1];
-	g_win.img_data[pos2 + 2] = g->t[29].img_ptr[pos + 2];
+	int			pos2;
+
+	g->dfc.texx = (int)(g->dfc.fx * 64) % 64;
+	g->dfc.texy = (int)(g->dfc.fy * 64) % 64;
+	pos2 = g->cam.id * 4 + g_win.resolution.x * 4 * y;
+	g_win.img_data[pos2] = g->color[0].b;
+	g_win.img_data[pos2 + 1] = g->color[0].g;
+	g_win.img_data[pos2 + 2] = g->color[0].r;
+	pos2 = g->cam.id * 4 + g_win.resolution.x * 4 *\
+			(g_win.resolution.y - y);
+	g_win.img_data[pos2] = g->color[1].b;
+	g_win.img_data[pos2 + 1] = g->color[1].g;
+	g_win.img_data[pos2 + 2] = g->color[1].r;
 }
 
-static void	draw_vertical_stripes(t_game *g)
+static void		draw_vertical_stripes(t_game *g)
 {
-	int		pos;
-	int		pos2;
-	int		y;
+	int			y;
 
 	y = g->cam.drawend + 1;
 	while (y < g_win.resolution.y)
@@ -43,19 +63,15 @@ static void	draw_vertical_stripes(t_game *g)
 			g->cam.posx;
 		g->dfc.fy = g->dfc.weight * g->dfc.fywall + (1.0 - g->dfc.weight) *\
 			g->cam.posy;
-		g->dfc.texx = (int)(g->dfc.fx * g->t[28].w) % g->t[28].w;
-		g->dfc.texy = (int)(g->dfc.fy * g->t[28].h) % g->t[28].h;
-		pos = g->dfc.texx * 4 + g->dfc.texy * 4 * g->t[28].h;
-		pos2 = g->cam.id * 4 + g_win.resolution.x * 4 * y;
-		ceiling(g, pos, pos2);
-		pos2 = g->cam.id * 4 + g_win.resolution.x * 4 *\
-			(g_win.resolution.y - y);
-		ground(g, pos, pos2);
+		if (g->is_fc_rgb == 0)
+			texturing(g, y);
+		else if (g->is_fc_rgb == 1)
+			coloring(g, y);
 		y++;
 	}
 }
 
-void		cast_floor(t_game *g)
+void			cast_floor(t_game *g)
 {
 	if (g->cam.side == 0 && g->cam.raydirx > 0)
 	{

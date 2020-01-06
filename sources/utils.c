@@ -6,15 +6,15 @@
 /*   By: ikhadem <ikhadem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/01 16:37:15 by ikhadem           #+#    #+#             */
-/*   Updated: 2020/01/01 18:44:07 by ikhadem          ###   ########.fr       */
+/*   Updated: 2020/01/04 00:31:38 by ikhadem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "cub3d.h"
 
 void		ft_putchar(char c)
 {
-	write(1 , &c, 1);
+	write(1, &c, 1);
 }
 
 void		ft_puterror(char *msg)

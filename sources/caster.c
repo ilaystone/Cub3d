@@ -6,11 +6,11 @@
 /*   By: ikhadem <ikhadem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 03:50:34 by ikhadem           #+#    #+#             */
-/*   Updated: 2019/12/31 03:28:44 by ikhadem          ###   ########.fr       */
+/*   Updated: 2020/01/04 05:00:52 by ikhadem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "cub3d.h"
 
 void		dda(t_game *g)
 {
@@ -31,9 +31,9 @@ void		dda(t_game *g)
 			g->cam.side = 1;
 		}
 		j = g->map.width * g->cam.mapy + g->cam.mapx;
-        if (g->map.grid[j] == '1')
-            g->cam.hit = 1;
-        else if (g->map.grid[j] == '1')
+		if (g->map.grid[j] == '1')
+			g->cam.hit = 1;
+		else if (g->map.grid[j] == '1')
 			g->cam.hit = 1;
 	}
 }

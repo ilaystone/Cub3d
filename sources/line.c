@@ -6,11 +6,11 @@
 /*   By: ikhadem <ikhadem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/15 14:53:23 by ikhadem           #+#    #+#             */
-/*   Updated: 2019/12/29 17:35:54 by ikhadem          ###   ########.fr       */
+/*   Updated: 2020/01/04 00:30:38 by ikhadem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "cub3d.h"
 
 t_line		new_line(t_vec2 p1, t_vec2 p2, t_color c)
 {
