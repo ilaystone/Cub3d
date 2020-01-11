@@ -6,17 +6,15 @@
 #    By: ikhadem <ikhadem@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/13 19:57:44 by ikhadem           #+#    #+#              #
-#    Updated: 2020/01/05 15:42:52 by ikhadem          ###   ########.fr        #
+#    Updated: 2020/01/09 03:35:09 by ikhadem          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
-#TODO: Redo this Makefile
 
 NAME = cub3d
 
 CC = gcc
 
-#CFLAGS = -Wall -Wextra -Werror
+# CFLAGS = -Wall -Wextra -Werror
 
 SRC :=	main.c \
 		GNL/get_next_line.c \
@@ -40,12 +38,38 @@ SRC :=	main.c \
 		sources/map.c \
 		sources/camera.c \
 		sources/events.c \
-		sources/mouvement.c
+		sources/mouvement.c \
+		sources/exit.c \
+		sources/hud.c \
+		sources/music.c \
+		sources/shadows.c
 
-LIBS = -I SDL/SDL2.framework/Headers/ -I SDL/SDL2_mixer.framework/Headers/ -I minilibx/ -I GNL/ -I includes/
+OBJ := $(SRC:.c=.o)
 
-all:
+HEADERS = -I SDL/SDL2.framework/Headers/ -I SDL/SDL2_mixer.framework/Headers/ \
+			-I minilibx/ -I GNL/ -I includes/
+
+LIBS = minilibx/libmlx.a -lz -framework OpenGl -framework AppKit -rpath\
+			@loader_path/SDL -framework SDL2 -F SDL/ -framework SDL2_mixer\
+			-F SDL/
+
+all: $(NAME)
+
+$(NAME): $(OBJ)
 	@make -C minilibx/
-	@$(CC) $(CFLAGS) $(SRC) $(LIBS) minilibx/libmlx.a -lz -framework OpenGl -framework AppKit -rpath @loader_path/SDL\
-		-framework SDL2 -F SDL/ -framework SDL2_mixer -F SDL/ -o cub3D 
+	@$(CC) $(CFLAGS) $(HEADERS) $(LIBS) $(OBJ) -o cub3D
 	@echo "Done"
+
+%.o : %.c
+	$(CC) $(CFLAGS) -c $(HEADERS) $< -o $@
+
+clean:
+	@make clean -C minilibx/
+	@rm -f $(OBJ)
+
+fclean: clean
+	@rm -f $(NAME)
+
+re: fclean all
+
+bonus: all

@@ -6,7 +6,7 @@
 /*   By: ikhadem <ikhadem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 03:49:07 by ikhadem           #+#    #+#             */
-/*   Updated: 2020/01/04 03:06:22 by ikhadem          ###   ########.fr       */
+/*   Updated: 2020/01/08 05:39:43 by ikhadem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,14 +48,17 @@ static void	draw_line_stripe(t_game *g, t_draw *v)
 {
 	while (v->y < g->cam.drawend)
 	{
-		v->d = v->y * 256 - g_win.resolution.y * 128 +\
+		v->d = (v->y - g->l_up) * 256 - g_win.resolution.y * 128 +\
 			g->cam.lineheight * 128;
 		v->texy = ((v->d * g->t[v->a].h) / g->cam.lineheight) / 256;
 		v->pos = g->t[v->a].h * v->texy * 4 + g->t[v->a].tex_x * 4;
 		v->pos2 = g->cam.id * 4 + g_win.resolution.x * 4 * v->y;
-		g_win.img_data[v->pos2] = g->t[v->a].img_ptr[v->pos];
-		g_win.img_data[v->pos2 + 1] = g->t[v->a].img_ptr[v->pos + 1];
-		g_win.img_data[v->pos2 + 2] = g->t[v->a].img_ptr[v->pos + 2];
+		g_win.img_data[v->pos2] = get_shadow(g->cam.perpewalldist,\
+			g->t[v->a].img_ptr[v->pos]);
+		g_win.img_data[v->pos2 + 1] = get_shadow(g->cam.perpewalldist,\
+			g->t[v->a].img_ptr[v->pos + 1]);
+		g_win.img_data[v->pos2 + 2] = get_shadow(g->cam.perpewalldist,\
+			g->t[v->a].img_ptr[v->pos + 2]);
 		v->y++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: ikhadem <ikhadem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/05 15:40:21 by ikhadem           #+#    #+#             */
-/*   Updated: 2020/01/06 05:55:32 by ikhadem          ###   ########.fr       */
+/*   Updated: 2020/01/07 03:24:41 by ikhadem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,7 @@ static void	move_player(t_game *g, int dir, double mv)
 void		update_player_pos(t_game *g)
 {
 	double	rt;
-	double	calc;
 
-	calc = (g_win.resolution.x / g_win.resolution.y);
 	rt = g->cam.turn * (3 * M_PI / 180);
 	move_camera(g, rt);
 	if (g->cam.move != 0)

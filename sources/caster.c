@@ -6,7 +6,7 @@
 /*   By: ikhadem <ikhadem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 03:50:34 by ikhadem           #+#    #+#             */
-/*   Updated: 2020/01/04 05:00:52 by ikhadem          ###   ########.fr       */
+/*   Updated: 2020/01/08 05:24:00 by ikhadem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,10 +73,10 @@ void		line_size(t_game *g)
 	if (g->cam.perpewalldist <= 0.05)
 		g->cam.perpewalldist = 0.05;
 	g->cam.lineheight = (int)(g_win.resolution.y / g->cam.perpewalldist);
-	g->cam.drawstart = -g->cam.lineheight / 2 + g_win.resolution.y / 2;
+	g->cam.drawstart = -g->cam.lineheight / 2 + g_win.resolution.y / 2 + g->l_up;
 	if (g->cam.drawstart <= 0)
 		g->cam.drawstart = 0;
-	g->cam.drawend = g->cam.lineheight / 2 + g_win.resolution.y / 2;
+	g->cam.drawend = g->cam.lineheight / 2 + g_win.resolution.y / 2 + g->l_up;
 	if (g->cam.drawend >= g_win.resolution.y)
 		g->cam.drawend = g_win.resolution.y - 1;
 }
@@ -103,11 +103,11 @@ void		cast_rays(t_game *g)
 		g->cam.deltadisty = fabs(1 / g->cam.raydiry);
 		g->cam.hit = 0;
 		g->cam.id = x;
+		g->zbuff[x] = g->cam.perpewalldist;
 		calc(g);
 		dda(g);
 		line_size(g);
 		create_world(g);
-		g->zbuff[x] = g->cam.perpewalldist;
 		x++;
 	}
 	draw_sprites(g);

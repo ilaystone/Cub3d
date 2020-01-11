@@ -6,7 +6,7 @@
 /*   By: ikhadem <ikhadem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/01 16:28:58 by ikhadem           #+#    #+#             */
-/*   Updated: 2020/01/04 21:03:02 by ikhadem          ###   ########.fr       */
+/*   Updated: 2020/01/08 05:13:16 by ikhadem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,10 +78,10 @@ t_game			init_game(char *file)
 {
 	t_game		game;
 	t_parser	p;
-	int			l;
 
 	if ((p.fd = open(file, O_RDONLY)) < 0)
 		exit_msg("File Not Working !!");
+	full_init(&game);
 	loop_file(&p, &game);
 	if (data_exists(&game))
 	{
@@ -92,5 +92,11 @@ t_game			init_game(char *file)
 		get_all_sprites(&game);
 		close(p.fd);
 	}
+	game.chacha = 0;
+	game.kaka = 0;
+	game.kaco = 0;
+	game.l_up = 0;
+	init_music(&game);
+	init_gun(&game);
 	return (game);
 }

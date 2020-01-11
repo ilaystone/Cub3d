@@ -6,7 +6,7 @@
 /*   By: ikhadem <ikhadem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 01:08:25 by ikhadem           #+#    #+#             */
-/*   Updated: 2020/01/04 00:30:24 by ikhadem          ###   ########.fr       */
+/*   Updated: 2020/01/07 01:47:09 by ikhadem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,6 @@ void			check_sprite(t_game *game, char *str, int tex_num)
 
 void			check_fc_rgb(t_game *game, char *str, int id)
 {
-	int r;
-	int g;
-	int b;
-
 	game->is_fc_rgb = 1;
 	if (ft_isdigit(str[0]))
 	{

@@ -6,7 +6,7 @@
 /*   By: ikhadem <ikhadem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/29 18:31:11 by ikhadem           #+#    #+#             */
-/*   Updated: 2020/01/04 00:31:05 by ikhadem          ###   ########.fr       */
+/*   Updated: 2020/01/08 21:43:27 by ikhadem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,10 @@ static void		calc_position(t_game *g, t_sp_draw *d)
 	d->spritescreenx = (int)((g_win.resolution.x / 2) * (1 + d->transformx /\
 		d->transformy));
 	d->sprite_height = abs((int)(g_win.resolution.y / d->transformy));
-	d->draw_starty = -d->sprite_height / 2 + g_win.resolution.y / 2;
+	d->draw_starty = -d->sprite_height / 2 + g_win.resolution.y / 2 + g->l_up;
 	if (d->draw_starty < 0)
 		d->draw_starty = 0;
-	d->draw_endy = d->sprite_height / 2 + g_win.resolution.y / 2;
+	d->draw_endy = d->sprite_height / 2 + g_win.resolution.y / 2 + g->l_up;
 	if (d->draw_endy >= g_win.resolution.y)
 		d->draw_endy = g_win.resolution.y - 1;
 	d->sprite_width = abs((int)(g_win.resolution.y / d->transformy));
@@ -64,7 +64,7 @@ static void		sprite_rendering2(t_game *g, t_draw *v, t_sp_draw *d, int s)
 	pos = g->slst[g->sprite_ordre[d->id]].id - 48;
 	while (y < d->draw_endy)
 	{
-		v->d = y * 256 - g_win.resolution.y * 128 + d->sprite_height *\
+		v->d = (y - g->l_up) * 256 - g_win.resolution.y * 128 + d->sprite_height *\
 			128;
 		v->texy = ((v->d * g->t[pos + 2].h) / d->sprite_height) / 256;
 		v->pos = g->t[pos + 2].w * 4 * v->texy + 4 * v->texx;
@@ -73,11 +73,12 @@ static void		sprite_rendering2(t_game *g, t_draw *v, t_sp_draw *d, int s)
 			g->t[pos + 2].img_ptr[v->pos + 1] != (char)0 &&
 			g->t[pos + 2].img_ptr[v->pos + 2] != (char)0)
 		{
-			g_win.img_data[v->pos2] = g->t[pos + 2].img_ptr[v->pos];
-			g_win.img_data[v->pos2 + 1] = g->t[pos + 2].img_ptr[v->pos\
-				+ 1];
-			g_win.img_data[v->pos2 + 2] = g->t[pos + 2].img_ptr[v->pos\
-				+ 2];
+			g_win.img_data[v->pos2] = get_shadow(g->sprite_distance[d->id],\
+				g->t[pos + 2].img_ptr[v->pos]);
+			g_win.img_data[v->pos2 + 1] = get_shadow(g->sprite_distance[d->id],\
+				g->t[pos + 2].img_ptr[v->pos + 1]);
+			g_win.img_data[v->pos2 + 2] = get_shadow(g->sprite_distance[d->id],\
+				g->t[pos + 2].img_ptr[v->pos + 2]);
 		}
 		y++;
 	}

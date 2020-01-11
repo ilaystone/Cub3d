@@ -6,7 +6,7 @@
 /*   By: ikhadem <ikhadem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 03:44:15 by ikhadem           #+#    #+#             */
-/*   Updated: 2020/01/06 05:00:09 by ikhadem          ###   ########.fr       */
+/*   Updated: 2020/01/09 03:34:22 by ikhadem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,15 +134,16 @@ typedef struct	s_game
 	int			is_fc_rgb;
 	t_color		color[2];
 	int			spcount;
-	int		    sprite_ordre[SPRITENUM];
+	int			sprite_ordre[SPRITENUM];
 	double		zbuff[MAX_WIDTH];
 	double		sprite_distance[SPRITENUM];
 	Mix_Chunk	*run;
-	Mix_Chunk	*Gun;
+	Mix_Chunk	*gun;
+	Mix_Music	*bgm[4];
 	int			chacha;
 	int			kaka;
 	int			kaco;
-	t_tex		gun;
+	int			l_up;
 }				t_game;
 
 typedef struct	s_parser
@@ -186,5 +187,17 @@ int				mouse_press(int button, int x, int y, t_game *g);
 int				mouse_release(int button, int x, int y, t_game *g);
 int				mouse_move(int x, int y, t_game *g);
 void			move_camera(t_game *g, double rt);
+void			full_init(t_game *g);
+void			full_free(t_game *g);
+int				kill_game(t_game *g);
+void			draw_lifebar();
+void			draw_hud();
+void			init_gun(t_game *g);
+void			init_music(t_game *g);
+void			play_music(int key, t_game *g);
+char			get_shadow(double distance, char c);
+void			hard_core(int key);
+void			split_press(int key, t_game *g);
+void			draw_gun(t_vec2 pos, t_game *g, int x, int y);
 
 #endif

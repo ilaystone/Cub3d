@@ -6,7 +6,7 @@
 /*   By: ikhadem <ikhadem@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/13 21:48:39 by ikhadem           #+#    #+#             */
-/*   Updated: 2020/01/04 04:35:50 by ikhadem          ###   ########.fr       */
+/*   Updated: 2020/01/07 18:21:33 by ikhadem          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ typedef struct	s_canvas
 	int			size_line;
 	int			endian;
 	char		*img_data;
+	int			shadow;
 }				t_canvas;
 
 t_canvas		g_win;
