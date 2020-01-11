@@ -26,7 +26,11 @@ wolfenstein and its goal is to get fammiliar with gomputer graphics
 * [GCC](https://gcc.gnu.org/)
 
 ## ressoureces used to realise this project
-* GNU's man is your best fiend in this project
+* [Lodev's guide](https://lodev.org/cgtutor/index.html)
+* [permadi's theories](https://permadi.com/1996/05/ray-casting-tutorial-table-of-contents/)
+* [pikuma](https://courses.pikuma.com/courses/raycasting)
+* [minimal raycasting engine](https://www.playfuljs.com/a-first-person-engine-in-265-lines/)
+* [making BMP images](https://en.wikipedia.org/wiki/BMP_file_format)
 
 <p align="center">
     <img src="https://i.imgur.com/jm1e5Hk.jpg" height="130">
