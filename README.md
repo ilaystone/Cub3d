@@ -19,7 +19,7 @@ wolfenstein and its goal is to get fammiliar with gomputer graphics
 - [x] using mouse to shoot / rotate camera
 - [x] Life bar (needs improvments)
 - [x] distance based shadows
-- [x] ability tio look up and sown
+- [x] ability to look up and down
 
 ## Prerequisit
 * common c knowledge
